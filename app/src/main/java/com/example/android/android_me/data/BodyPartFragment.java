@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.os.Bundle;
 import com.example.android.android_me.R;
 import android.widget.ImageView;
-import android.view.View.OnClickListener;
+import java.util.ArrayList;
+
 /**
  * Created by ctyeung on 12/29/17.
  */
@@ -20,6 +21,7 @@ public class BodyPartFragment extends Fragment
     private ImageView imageView;
     private View rootView;
     private String part;
+    private String savedString;
     private int mListIndex = 0;
     private int numParts = 0;
 
@@ -27,9 +29,19 @@ public class BodyPartFragment extends Fragment
     {
     }
 
-    public void setPart(String part)
+    public void parsePartType(ViewGroup container)
     {
-        this.part = part;
+        String name = getResources().getResourceName(container.getId());
+
+        if(name.indexOf(PART_HEAD)>0)
+            part = PART_HEAD;
+
+        else if(name.indexOf(PART_TORSO)>0)
+            part = PART_TORSO;
+
+        else if(name.indexOf(PART_LEGS)>0)
+            part = PART_LEGS;
+
         numParts = getPartCount();
     }
 
@@ -48,6 +60,14 @@ public class BodyPartFragment extends Fragment
                              ViewGroup container,
                              Bundle saveInstanceState)
     {
+        parsePartType(container);
+
+        if(null!=saveInstanceState
+                && null!=part)
+        {
+            mListIndex = saveInstanceState.getInt(part);
+        }
+
         inflate(inflater, container);
         setImageView();
 
@@ -68,7 +88,7 @@ public class BodyPartFragment extends Fragment
     private void inflate(LayoutInflater inflater,
                          ViewGroup container)
     {
-        switch(this.part)
+        switch(part)
         {
             default:
             case PART_HEAD:
@@ -121,5 +141,11 @@ public class BodyPartFragment extends Fragment
                 imageView.setImageResource(AndroidImageAssets.getLegs().get(mListIndex));
                 break;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle currentState)
+    {
+        currentState.putInt(part, mListIndex);
     }
 }

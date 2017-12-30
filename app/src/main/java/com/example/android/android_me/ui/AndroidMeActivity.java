@@ -31,26 +31,24 @@ public class AndroidMeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
 
-        BodyPartFragment headFragment = new BodyPartFragment();
-        headFragment.setPart(BodyPartFragment.PART_HEAD);
+        if(null==savedInstanceState)
+        {
+            BodyPartFragment headFragment = new BodyPartFragment();
+            BodyPartFragment torsoFragment = new BodyPartFragment();
+            BodyPartFragment legsFragment = new BodyPartFragment();
 
-        BodyPartFragment torsoFragment = new BodyPartFragment();
-        torsoFragment.setPart(BodyPartFragment.PART_TORSO);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                            .add(R.id.head_container, headFragment)
+                            .commit();
 
-        BodyPartFragment legsFragment = new BodyPartFragment();
-        legsFragment.setPart(BodyPartFragment.PART_LEGS);
+            fragmentManager.beginTransaction()
+                            .add(R.id.torso_container, torsoFragment)
+                            .commit();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                        .add(R.id.head_container, headFragment)
-                        .commit();
-
-        fragmentManager.beginTransaction()
-                .add(R.id.torso_container, torsoFragment)
-                .commit();
-
-        fragmentManager.beginTransaction()
-                .add(R.id.legs_container, legsFragment)
-                .commit();
+            fragmentManager.beginTransaction()
+                            .add(R.id.legs_container, legsFragment)
+                            .commit();
+        }
     }
 }
