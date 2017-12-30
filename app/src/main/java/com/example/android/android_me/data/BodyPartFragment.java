@@ -88,24 +88,8 @@ public class BodyPartFragment extends Fragment
     private void inflate(LayoutInflater inflater,
                          ViewGroup container)
     {
-        switch(part)
-        {
-            default:
-            case PART_HEAD:
-                rootView = inflater.inflate(R.layout.fragment_head_part, container, false);
-                imageView = (ImageView) rootView.findViewById(R.id.iv_head_part);
-                break;
-
-            case PART_TORSO:
-                rootView = inflater.inflate(R.layout.fragment_body_part, container, false);
-                imageView = (ImageView) rootView.findViewById(R.id.iv_body_part);
-                break;
-
-            case PART_LEGS:
-                rootView = inflater.inflate(R.layout.fragment_legs_part, container, false);
-                imageView = (ImageView) rootView.findViewById(R.id.iv_legs_part);
-                break;
-        }
+        rootView = inflater.inflate(R.layout.fragment_body_part, container, false);
+        imageView = (ImageView) rootView.findViewById(R.id.iv_body_part);
     }
 
     private int getPartCount()
