@@ -12,4 +12,5 @@ Exercises (18 - 23)
 - Main GridView for image selection.
 - click to select head, body, legs.
 - menu button, 'Next' -> assembled (head, torso, legs) activity. 
+
 ![screen shot 2017-12-31 at 5 39 20 pm](https://user-images.githubusercontent.com/1282659/34464703-9a7f751a-ee51-11e7-9675-e899875bc560.png)
