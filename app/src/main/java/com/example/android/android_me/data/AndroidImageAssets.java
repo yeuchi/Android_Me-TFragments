@@ -22,7 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Class for storing all the image drawable resources in ArrayLists
-public class AndroidImageAssets {
+public class AndroidImageAssets
+{
+    final public static int PARTS_LENGTH = 12;
+    final public static int INDEX_HEAD=0;
+    final public static int INDEX_TORSO=1;
+    final public static int INDEX_LEGS=2;
+    final public static String STR_HEAD_INDEX = "headIndex";
+    final public static String STR_TORSO_INDEX = "torsoIndex";
+    final public static String STR_LEGS_INDEX = "legsIndex";
+
 
     // Lists for all AndroidMe images
     // Broken down into heads, bodies, legs, and all images

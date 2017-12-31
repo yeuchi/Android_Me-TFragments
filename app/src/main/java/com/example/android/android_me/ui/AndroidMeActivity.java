@@ -19,12 +19,18 @@ package com.example.android.android_me.ui;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.content.Intent;
 
 import com.example.android.android_me.R;
+import com.example.android.android_me.data.AndroidImageAssets;
 import com.example.android.android_me.data.BodyPartFragment;
 
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
-public class AndroidMeActivity extends AppCompatActivity {
+public class AndroidMeActivity extends AppCompatActivity
+{
+    private int headIndex;
+    private int torsoIndex;
+    private int legsIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +39,13 @@ public class AndroidMeActivity extends AppCompatActivity {
 
         if(null==savedInstanceState)
         {
+            setPartsIndex();
             BodyPartFragment headFragment = new BodyPartFragment();
+            headFragment.setIndex(headIndex);
             BodyPartFragment torsoFragment = new BodyPartFragment();
+            torsoFragment.setIndex(torsoIndex);
             BodyPartFragment legsFragment = new BodyPartFragment();
+            legsFragment.setIndex(legsIndex);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
@@ -50,5 +60,14 @@ public class AndroidMeActivity extends AppCompatActivity {
                             .add(R.id.legs_container, legsFragment)
                             .commit();
         }
+    }
+
+    protected void setPartsIndex()
+    {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        headIndex = bundle.getInt(AndroidImageAssets.STR_HEAD_INDEX);
+        torsoIndex = bundle.getInt(AndroidImageAssets.STR_TORSO_INDEX);
+        legsIndex = bundle.getInt(AndroidImageAssets.STR_LEGS_INDEX);
     }
 }
