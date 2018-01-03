@@ -19,3 +19,6 @@ Exercises (23 - 25)
 - Tablet with multiple activities
 
 ![screen shot 2018-01-01 at 8 25 19 pm](https://user-images.githubusercontent.com/1282659/34472953-fdf7e998-ef31-11e7-8189-56bf066ecb18.png)
+
+Original starter-code
+https://github.com/udacity/Android_Me/tree/TFragments.00-StartingCode
