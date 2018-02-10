@@ -1,3 +1,6 @@
+Udacity Android nano-degree exercise and starter code
+
+
 # Android_Me-TFragments
 Exercises (Lesson 1-17)
 - dynamic fragments in framelayout containers.
